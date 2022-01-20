@@ -29,8 +29,7 @@ emcc $RELEASE_CONF -std=c++17 \
   -I$SOURCE_DIR/src/ \
   -I$SOURCE_DIR/tgfx/src/ \
   -DPAG_BUILD_FOR_WEB \
-  ../src/pag_wasm_bindings.cpp \
-  $BUILD_DIR/libpag.a \
+  -Wl,--whole-archive $BUILD_DIR/libpag.a \
   --no-entry \
   --bind \
   -s WASM=1 \

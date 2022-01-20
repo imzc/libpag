@@ -18,20 +18,21 @@
 
 #include <emscripten/bind.h>
 
-#include "gpu/opengl/GLDefines.h"
-#include "image/ImageInfo.h"
 #include "pag/pag.h"
 #include "pag/types.h"
+#include "image/ImageInfo.h"
+#include "gpu/opengl/GLDefines.h"
+#include "raster/PathTypes.h"
+#include "raster/FontMetrics.h"
+#include "rendering/editing/StillImage.h"
 #include "platform/web/GPUDrawable.h"
 #include "platform/web/NativeImage.h"
-#include "raster/FontMetrics.h"
-#include "raster/PathTypes.h"
-#include "rendering/editing/StillImage.h"
+#include "platform/web/WebAssemblyBinding.h"
 
 using namespace emscripten;
 using namespace pag;
 
-EMSCRIPTEN_BINDINGS(pag) {
+EmscriptenBindingInitializer_pag::EmscriptenBindingInitializer_pag() {
   class_<PAGLayer>("_PAGLayer")
       .smart_ptr<std::shared_ptr<PAGLayer>>("_PAGLayer")
       .function("_uniqueID", optional_override([](PAGLayer& pagLayer) {
