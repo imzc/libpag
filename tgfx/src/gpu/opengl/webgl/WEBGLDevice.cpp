@@ -130,6 +130,6 @@ void WEBGLDevice::onClearCurrent() {
 }
 
 bool WEBGLDevice::sharableWith(void*) const {
-  return false;
+  return true;
 }
 }  // namespace pag
